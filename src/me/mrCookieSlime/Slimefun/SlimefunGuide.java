@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import api.praya.myitems.main.MyItemsAPI;
+import me.masonic.mc.Utility.InventoryUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -676,7 +678,7 @@ public class SlimefunGuide {
 								public void run(final Player p) {
 								    if (research.canUnlock(p)) {
 								        p.setLevel(p.getLevel() - research.getCost());
-								        
+								        SlimefunStartup.getEconomy().withdrawPlayer(p, research.getCost_money());
 								        if (research.hasUnlocked(p)) openCategory(p, category, true, selected_page, experimental);
 								        else if (!Research.isResearching(p)) {
 								            if (p.getGameMode() == GameMode.CREATIVE) {
@@ -701,7 +703,16 @@ public class SlimefunGuide {
                                             }
 								        }
 								    }
-								    else Messages.local.sendTranslation(p, "messages.not-enough-xp", true);
+								    else {
+								    	switch (research.canUnlockCondition(p)) {
+											case 3:
+												Messages.local.sendTranslation(p, "messages.not-enough-xp", true);
+												break;
+											case 4:
+												Messages.local.sendTranslation(p, "messages.not-enough-money", true);
+												break;
+										}
+								    }
 								}
 							});
 						}
@@ -856,7 +867,12 @@ public class SlimefunGuide {
 					if (survival && !Slimefun.hasUnlocked(p, sfitem.getItem(), false) && sfitem.getResearch() != null) {
 						if (Slimefun.hasPermission(p, sfitem, false)) {
 						    Research research = sfitem.getResearch();
-							menu.addItem(index, new CustomItem(Material.BARRIER, "&r" + StringUtils.formatItemName(sfitem.getItem(), false), 0, new String[] {"&8[ &4&l已锁定 &8]", "", "&8> &6点击以解锁", "", "&8◇ &7花费: &6" + research.getCost() + " &7级经验"}));
+							menu.addItem(index,
+									new CustomItem(Material.BARRIER,
+											"&r" + StringUtils.formatItemName(sfitem.getItem(),
+											false),
+											0,
+											research.getResearchLore()));
 							menu.addMenuClickHandler(index, new MenuClickHandler() {
 								
 								@Override
@@ -864,6 +880,14 @@ public class SlimefunGuide {
 									if (research.canUnlock(p)) {
 									    if (!(p.getGameMode() == GameMode.CREATIVE && Research.creative_research)) {
 									        p.setLevel(p.getLevel() - research.getCost());
+									        SlimefunStartup.getEconomy().withdrawPlayer(p, research.getCost_money());
+
+											MyItemsAPI mapi = MyItemsAPI.getInstance();
+											ItemStack bp_a = mapi.getGameManagerAPI().getItemManagerAPI().getItem("sf1");
+											ItemStack bp_b = mapi.getGameManagerAPI().getItemManagerAPI().getItem("sf2");
+
+											InventoryUtil.takeItem(p.getInventory(), bp_a.getItemMeta().getDisplayName(), research.getCost_blueprint_a());
+											InventoryUtil.takeItem(p.getInventory(), bp_b.getItemMeta().getDisplayName(), research.getCost_blueprint_b());
 									    }
 									    
 									    if (research.hasUnlocked(p)) openCategory(p, category, true, selected_page, experimental);
@@ -884,7 +908,22 @@ public class SlimefunGuide {
                                             }
 									    }
 									}
-									else Messages.local.sendTranslation(p, "messages.not-enough-xp", true);
+									else {
+										switch (research.canUnlockCondition(p)) {
+											case 3:
+												Messages.local.sendTranslation(p, "messages.not-enough-xp", true);
+												break;
+											case 4:
+												Messages.local.sendTranslation(p, "messages.not-enough-money", true);
+												break;
+											case 5:
+												Messages.local.sendTranslation(p, "messages.not-enough-bpa", true);
+												break;
+											case 6:
+												Messages.local.sendTranslation(p, "messages.not-enough-bpb", true);
+												break;
+										}
+									}
 									return false;
 								}
 							});

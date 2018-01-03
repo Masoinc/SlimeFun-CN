@@ -12,6 +12,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.world.WorldLoadEvent;
 import org.bukkit.event.world.WorldUnloadEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -76,6 +77,7 @@ import me.mrCookieSlime.Slimefun.listeners.TeleporterListener;
 import me.mrCookieSlime.Slimefun.listeners.ToolListener;
 import net.coreprotect.CoreProtect;
 import net.coreprotect.CoreProtectAPI;
+import net.milkbowl.vault.economy.Economy;
 
 public class SlimefunStartup extends JavaPlugin {
 
@@ -94,6 +96,7 @@ public class SlimefunStartup extends JavaPlugin {
 	private boolean clearlag = false;
 	private boolean exoticGarden = false;
 	private boolean coreProtect = false;
+	private static Economy economy = null;
 
 	// Supported Versions of Minecraft
 	final String[] supported = {"v1_9_", "v1_10_", "v1_11_", "v1_12_"};
@@ -381,6 +384,10 @@ public class SlimefunStartup extends JavaPlugin {
 
 			coreProtect = getServer().getPluginManager().isPluginEnabled("CoreProtect");
 
+			// Register economy plugin
+			RegisteredServiceProvider<Economy> rsp = Bukkit.getServer().getServicesManager().getRegistration(Economy.class);
+			economy = rsp.getProvider();
+
             Bukkit.getScheduler().scheduleSyncDelayedTask(this, new BukkitRunnable() {
                 @Override
                 public void run() {
@@ -528,5 +535,9 @@ public class SlimefunStartup extends JavaPlugin {
 
 	public CoreProtectAPI getCoreProtectAPI() {
 		return coreProtectAPI;
+	}
+
+	public static Economy getEconomy() {
+		return economy;
 	}
 }

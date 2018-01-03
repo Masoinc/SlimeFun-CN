@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../ModernSky/ModernSky.iml" filepath="$PROJECT_DIR$/../ModernSky/ModernSky.iml" />
       <module fileurl="file://$PROJECT_DIR$/SlimeFun[CN].iml" filepath="$PROJECT_DIR$/SlimeFun[CN].iml" />
     </modules>
   </component>

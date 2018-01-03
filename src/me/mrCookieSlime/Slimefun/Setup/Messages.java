@@ -8,9 +8,12 @@ public class Messages {
 	
 	public static void setup() {
 		local.setPrefix("&aSlimefun &7> ");
-		local.setDefault("messages.not-researched", "&4You do not have enough Knowledge to understand this");
-		local.setDefault("messages.not-enough-xp", "&4You do not have enough XP to unlock this");
-		local.setDefault("messages.unlocked", "&bYou have unlocked &7\"%research%\"");
+		local.setDefault("messages.not-researched", "&7你尚未解锁此物品");
+		local.setDefault("messages.not-enough-xp", "&7经验不足");
+		local.setDefault("messages.not-enough-money", "&7黑币不足");
+		local.setDefault("messages.not-enough-bpa", "§8[§2通用§8] §6科技蓝图§7不足");
+		local.setDefault("messages.not-enough-bpb", "§8[§d核心§8] §6科技蓝图§7不足");
+		local.setDefault("messages.unlocked", "&7你已解锁 &6\"%research%\"");
 		local.setDefault("messages.fortune-cookie", new String[] {"&7Help me, I am trapped in a Fortune Cookie Factory!", "&7You will die tomorrow...     by a Creeper", "&7At some Point in your Life something bad will happen!!!", "&7Next week you will notice that this is not the real World, you are in a kind of \"Matrix\" or lets call it Computer game. Yes you are in a Computer Game", "&7This Cookie will taste good in a few seconds", "&7You will die soon and the last word you will hear is gonna be \"EXTERMINATE!!!\"", "&7Whatever you do, do not hug a Creeper... I tried it. It feels good, but it's not worth it."});
 		local.setDefault("commands.help", "Displays this Help Screen");
 		local.setDefault("commands.cheat", "Allows you to cheat Items");

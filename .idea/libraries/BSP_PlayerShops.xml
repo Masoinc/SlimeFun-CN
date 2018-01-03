@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="BSP-PlayerShops">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../ModernSky/lib/BSP-PlayerShops.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

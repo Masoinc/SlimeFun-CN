@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="msky_core@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="msky_core">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="gtm"/>
+    <schema id="4" parent="1" name="gtm_2"/>
+    <schema id="5" parent="1" name="gtm_ess"/>
+    <schema id="6" parent="1" name="gtm_gang"/>
+    <schema id="7" parent="1" name="gtm_pex"/>
+    <schema id="8" parent="1" name="gtm_plot"/>
+    <schema id="9" parent="1" name="information_schema"/>
+    <schema id="10" parent="1" name="mskyess"/>
+    <schema id="11" parent="1" name="msky_1"/>
+    <schema id="12" parent="1" name="mxv2_authme"/>
+    <schema id="13" parent="1" name="mxv2_ess"/>
+    <schema id="14" parent="1" name="mxv2_pex"/>
+    <schema id="15" parent="1" name="mxv2_playerdata"/>
+    <schema id="16" parent="1" name="mxv2_plot"/>
+    <schema id="17" parent="1" name="mysql"/>
+    <schema id="18" parent="1" name="performance_schema"/>
+    <schema id="19" parent="1" name="sky1_aa"/>
+    <schema id="20" parent="1" name="sky_1_pex"/>
+    <schema id="21" parent="1" name="sys"/>
+    <table id="22" parent="2" name="sign"/>
+    <column id="23" parent="22" name="user_name">
+      <Position>1</Position>
+      <DataType>varchar(32)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="24" parent="22" name="user_uuid">
+      <Position>2</Position>
+      <DataType>varchar(40)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="25" parent="22" name="sign_record">
+      <Position>3</Position>
+      <DataType>json|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+  </database-model>
+</dataSource>
