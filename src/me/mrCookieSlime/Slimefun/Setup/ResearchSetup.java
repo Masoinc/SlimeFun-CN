@@ -101,7 +101,7 @@ public class ResearchSetup {
         Slimefun.registerResearch(new Research(96, "Water Staff", 8, 1500), SlimefunItems.STAFF_WATER);
         Slimefun.registerResearch(new Research(97, "Golden City", 19, 1200), SlimefunItems.GOLD_24K_BLOCK);
         Slimefun.registerResearch(new Research(98, "Advanced Mining 101", 42, 15000, 0, 1), SlimefunItems.ADVANCED_DIGITAL_MINER);
-        Slimefun.registerResearch(new Research(99, "Composting Dirt", 15, 6000, 0, 1), SlimefunItems.COMPOSTER);
+        Slimefun.registerResearch(new Research(99, "Composting Dirt", 25, 35000, 3, 1), SlimefunItems.COMPOSTER);
         Slimefun.registerResearch(new Research(100, "Farmer Shoes", 4, 600), SlimefunItems.FARMER_SHOES);
         Slimefun.registerResearch(new Research(101, "Explosive Pickaxe", 28, 16000, 0, 1), SlimefunItems.EXPLOSIVE_PICKAXE);
         Slimefun.registerResearch(new Research(102, "Automated Gold Pan", 17, 6000, 0, 1), SlimefunItems.AUTOMATED_PANNING_MACHINE);
